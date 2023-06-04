@@ -7,7 +7,7 @@ pipeline {
 			}}
 		stage('Build'){
 		  steps {
-			sh '/home//home/chetan/Documents/DevOps_Tool/apache-maven-3.9.2-bin/apache-maven-3.9.2/bin/mvn install'
+			sh '/home/chetan/Documents/DevOps_Tool/apache-maven-3.9.2-bin/apache-maven-3.9.2/bin/mvn install'
 			}}
 		stage('Deployment'){
 		  steps {
