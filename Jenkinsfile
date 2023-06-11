@@ -16,7 +16,7 @@ pipeline {
 	                 }}
 		stage('Deployment'){
 		    steps {
-			sh 'sshpass -p "dev" scp target/Apple.war chetan@172.17.0.2:/home/chetan/SLAVE/apache-tomcat-9.0.75/webapps'
+			sh 'sshpass -p "Redhat" scp target/Apple.war chetan@172.17.0.2:/home/chetan/SLAVE/apache-tomcat-9.0.75/webapps'
 			}}
 		stage('Docker build'){
 		    steps {
