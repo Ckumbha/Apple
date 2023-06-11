@@ -12,27 +12,27 @@ pipeline {
 		      }}
 		stage('Build') {
 	           steps {
-			  sh '/home/guru/slaveDD2/apache-maven-3.9.0/bin/mvn install'
+			  sh '/home/chetan/SLAVE/apache-maven-3.6.3/mvn install'
 	                 }}
 		stage('Deployment'){
 		    steps {
-			sh 'sshpass -p "dev" scp target/LoginWebAppApplicationWith-Docker.war guru@172.17.0.2:/home/guru/slaveDD2/apache-tomcat-9.0.72/webapps'
+			sh 'sshpass -p "dev" scp target/Apple.war chetan@172.17.0.2:/home/chetan/SLAVE/apache-tomcat-9.0.75/webapps'
 			}}
 		stage('Docker build'){
 		    steps {
-			sh 'docker build -t swapnilhub/pipelineimage11.1.2 .'
+			sh 'docker build -t chetankumbhare/pipelineimage11.1.2 .'
 			}}
 		stage('Docker Login'){
 		    steps {
-		withCredentials([string(credentialsId: 'swapnilhub', variable: 'docker-swapnilhub')]){
-    		sh 'docker login -u swapnilhub -p${docker-swapnilhub}'                 
+		withCredentials([string(credentialsId: '51e384e0-8192-4bac-a1d1-697d479a88fe', variable: 'Docker-Creds')]){
+    		sh 'docker login -u chetankumbhare -p${Docker-Creds}'                 
 			echo 'Login Completed'
 			}
 			
 			}}
 		stage('Push Image to Docker Hub') {         
     		    steps{                            
- 			sh 'docker push swapnilhub/pipelineimage11.1.2:$BUILD_NUMBER'           
+ 			sh 'docker push chetankumbhare/pipelineimage11.1.2:$BUILD_NUMBER'           
 			echo 'Push Image Completed'       
     			}}
 		
